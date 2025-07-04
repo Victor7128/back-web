@@ -127,8 +127,6 @@ async fn delete_item_by_id(db: web::Data<PgPool>, id: web::Path<Uuid>) -> impl R
 async fn main(
     #[shuttle_shared_db::Postgres] connection_string: String,
 ) -> ShuttleActixWeb<impl FnOnce(&mut actix_web::web::ServiceConfig) + Send + Clone + 'static> {
-    // Inicializa logger
-    env_logger::init();
     info!("Iniciando el servidor...");
 
     let connection_string = if connection_string.contains('?') {
